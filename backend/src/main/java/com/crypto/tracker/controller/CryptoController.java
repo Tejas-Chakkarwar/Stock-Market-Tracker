@@ -59,13 +59,20 @@ public class CryptoController {
             for (Map.Entry<String, CryptoQuote> entry : quotes.entrySet()) {
                 CryptoQuote quote = entry.getValue();
 
+                // Convert timestamp from seconds to milliseconds for JavaScript
+                Long timestamp = quote.getTimestamp();
+                if (timestamp != null && timestamp < 10000000000L) {
+                    // If timestamp is less than 10 billion, it's in seconds, convert to milliseconds
+                    timestamp = timestamp * 1000;
+                }
+
                 CryptoIndexResponse dto = new CryptoIndexResponse(
                     quote.getSymbol(),
                     quote.getName(),
                     quote.getCurrentPrice(),
                     quote.getPercentChangeValue(),
                     quote.getExchange(),
-                    quote.getTimestamp()
+                    timestamp
                 );
                 response.add(dto);
             }
