@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles - Dark theme */
+body {
+  @apply bg-gray-900 text-gray-100;
+}
+
+/* Card component - Dark theme */
+.card {
+  @apply bg-gray-800 rounded-lg border border-gray-700 p-6 shadow-lg;
+}
+
+/* Button styles */
+.btn {
+  @apply px-4 py-2 rounded-lg font-medium transition-colors;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+/* Price change indicators with background for visibility */
+.price-up {
+  @apply text-green-400 bg-green-900/30;
+}
+
+.price-down {
+  @apply text-red-400 bg-red-900/30;
+}
