@@ -26,7 +26,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/indices")
-@CrossOrigin(origins = "${FRONTEND_URL:http://localhost:3000}")
+@CrossOrigin(origins = {"http://localhost:3000", "https://stock-market-tracker-eosin.vercel.app/"})
 public class CryptoController {
 
     private static final Logger log = LoggerFactory.getLogger(CryptoController.class);
