@@ -35,7 +35,7 @@ export async function fetchCryptoIndices(): Promise<CryptoIndex[]> {
     const response = await apiClient.get<CryptoIndex[]>('/indices');
     return response.data;
   } catch (error) {
-    handleApiError(error, 'Failed to fetch cryptocurrency data');
+    handleApiError(error, 'Failed to fetch stock indices data');
     throw error;
   }
 }

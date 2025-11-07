@@ -77,7 +77,7 @@ export default function HomePage() {
       <div className="flex items-center justify-center min-h-[400px]">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-gray-400">Loading cryptocurrency data...</p>
+          <p className="text-gray-400">Loading stock indices data...</p>
         </div>
       </div>
     );
@@ -105,10 +105,10 @@ export default function HomePage() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold text-white mb-2">
-            Cryptocurrency Tracker
+            Stock Indices Tracker
           </h1>
           <p className="text-gray-400">
-            Real-time prices from Twelve Data API
+            Real-time prices
           </p>
         </div>
         {lastUpdate && (
@@ -181,7 +181,7 @@ export default function HomePage() {
         <ul className="text-blue-200 text-sm space-y-1">
           <li>• Data updates automatically every 90 seconds</li>
           <li>• Backend caches responses for 120 seconds to respect API limits</li>
-          <li>• Click any cryptocurrency to view 30-day price history</li>
+          <li>• Click any stock indices to view 30-day price history</li>
           <li>• Rate limits: 20 requests/minute, 500 requests/month</li>
         </ul>
       </div>

@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Crypto Tracker',
-  description: 'Real-time cryptocurrency price tracking with historical data',
+  title: 'Stock Indices Tracker',
+  description: 'Real-time Stock Indices price tracking with historical data',
 }
 
 export default function RootLayout({
@@ -19,10 +19,10 @@ export default function RootLayout({
           <header className="bg-white shadow-sm border-b">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
               <h1 className="text-2xl font-bold text-gray-900">
-                📈 Crypto Tracker
+                📈 Stock Indices Tracker
               </h1>
               <p className="text-sm text-gray-500 mt-1">
-                Real-time cryptocurrency prices powered by Twelve Data API
+                Real-time Stock Indices Tracker
               </p>
             </div>
           </header>
