@@ -371,24 +371,6 @@ npm install
 - Check the API Limits component on the home page
 - Consider reducing auto-refresh frequency
 
-## Development Notes
-
-### Code Style
-- All Java classes use plain POJOs (no Lombok) for Java 21 compatibility
-- TypeScript with strict mode enabled
-- ESLint configured for code quality
-- Consistent naming conventions across backend and frontend
-
-### Environment-Specific Configuration
-
-The application uses environment variables for configuration. Never commit `.env` to version control.
-
-### API Key Security
-
-- Store API keys in `.env` file (git-ignored)
-- Use `.env.example` as a template for other developers
-- Never hardcode API keys in source code
-
 ## Performance Optimizations
 
 1. **Backend Caching**: Redis cache reduces API calls by 90%+
@@ -412,10 +394,3 @@ The application uses environment variables for configuration. Never commit `.env
 
 This project is created for educational purposes as part of a technical assessment.
 
-## Contact
-
-For questions or issues, please open an issue in the repository.
-
----
-
-**Built with ❤️ using Spring Boot and Next.js**
