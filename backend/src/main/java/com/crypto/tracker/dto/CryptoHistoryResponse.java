@@ -2,12 +2,6 @@ package com.crypto.tracker.dto;
 
 import java.util.List;
 
-/**
- * Response DTO for historical price data.
- *
- * This is what the frontend receives when calling GET /api/indices/{symbol}/history
- * Includes the price history and calculated statistics.
- */
 public class CryptoHistoryResponse {
 
     private String symbol;                      // e.g., "BTC/USD"

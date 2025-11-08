@@ -1,10 +1,5 @@
 package com.crypto.tracker.dto;
 
-/**
- * Single data point in the historical chart.
- *
- * This is what the frontend receives for each day in the 30-day history.
- */
 public class HistoryDataPoint {
 
     private String date;      // e.g., "2024-11-05"

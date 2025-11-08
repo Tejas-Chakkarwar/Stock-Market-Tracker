@@ -6,20 +6,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Represents the full time series response from Twelve Data API.
- *
- * Example API response:
- * {
- *   "meta": {
- *     "symbol": "BTC/USD",
- *     "interval": "1day",
- *     ...
- *   },
- *   "values": [ ... array of TimeSeriesValue ... ],
- *   "status": "ok"
- * }
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TimeSeriesResponse implements Serializable {
 
@@ -57,9 +43,6 @@ public class TimeSeriesResponse implements Serializable {
         this.status = status;
     }
 
-    /**
-     * Metadata about the time series.
-     */
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class TimeSeriesMeta implements Serializable {
         @JsonProperty("symbol")

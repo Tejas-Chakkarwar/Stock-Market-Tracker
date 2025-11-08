@@ -17,13 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * REST controller for stock market indices data endpoints.
- *
- * Endpoints:
- * - GET /api/indices - List all tracked stock indices with current prices
- * - GET /api/indices/{symbol}/history - Get 30-day price history for a specific index
- */
 @RestController
 @RequestMapping("/api/indices")
 @CrossOrigin(origins = {"http://localhost:3000", "https://stock-market-tracker-eosin.vercel.app/"})
@@ -37,15 +30,6 @@ public class CryptoController {
         this.twelveDataService = twelveDataService;
     }
 
-    /**
-     * GET /api/indices
-     *
-     * Returns a list of all tracked stock market indices with their current prices.
-     *
-     * Response is cached for 120 seconds to minimize API calls.
-     *
-     * @return List of stock indices with current prices
-     */
     @GetMapping
     public ResponseEntity<?> getAllIndices() {
         log.info("GET /api/indices - Fetching all stock market indices");
@@ -87,19 +71,6 @@ public class CryptoController {
         }
     }
 
-    /**
-     * GET /api/indices/{symbol}/history
-     *
-     * Returns 30-day historical price data for a specific stock market index.
-     * Includes OHLC data for charting and calculated min/max/avg statistics.
-     *
-     * Symbol format: Use URL-safe format (e.g., "SPX", "DJI", "IXIC")
-     *
-     * Response is cached for 300 seconds (historical data doesn't change).
-     *
-     * @param symbol Stock index symbol (e.g., "SPX", "DJI", "IXIC", "FTSE")
-     * @return Historical price data with statistics
-     */
     @GetMapping("/{symbol}/history")
     public ResponseEntity<?> getHistory(@PathVariable String symbol) {
         // Convert URL-safe symbol format back to API format if needed

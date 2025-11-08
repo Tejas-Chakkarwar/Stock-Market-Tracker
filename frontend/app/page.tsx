@@ -6,10 +6,10 @@ import { fetchCryptoIndices, symbolToUrlFormat } from '@/lib/api';
 import { CryptoIndex } from '@/types/crypto';
 import ApiLimits from '@/components/ApiLimits';
 
-/**
- * Home page displaying all tracked cryptocurrencies.
- * Auto-refreshes every 90 seconds to show live prices.
- */
+
+ //Home page displaying all tracked cryptocurrencies.
+ //Auto-refreshes every 90 seconds to show live prices.
+
 export default function HomePage() {
   const [cryptos, setCryptos] = useState<CryptoIndex[]>([]);
   const [loading, setLoading] = useState(true);

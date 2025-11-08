@@ -6,24 +6,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
-/**
- * General application configuration beans.
- */
 @Configuration
 public class AppConfig {
 
-    /**
-     * RestTemplate for making HTTP calls to external APIs.
-     */
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
-    /**
-     * ObjectMapper for JSON serialization/deserialization.
-     * Configured to be lenient with unknown properties.
-     */
     @Bean
     public ObjectMapper objectMapper() {
         ObjectMapper mapper = new ObjectMapper();

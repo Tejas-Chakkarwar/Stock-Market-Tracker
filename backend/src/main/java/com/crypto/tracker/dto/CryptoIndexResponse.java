@@ -1,10 +1,5 @@
 package com.crypto.tracker.dto;
 
-/**
- * Response DTO for a single cryptocurrency in the list view.
- *
- * This is what the frontend receives when calling GET /api/indices
- */
 public class CryptoIndexResponse {
 
     private String symbol;           // e.g., "BTC/USD"

@@ -12,12 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-/**
- * REST controller for API metadata and usage statistics.
- *
- * Endpoints:
- * - GET /api/meta/limits - Get current API usage and rate limit information
- */
 @RestController
 @RequestMapping("/api/meta")
 @CrossOrigin(origins = "${FRONTEND_URL:http://localhost:3000}")
@@ -31,18 +25,6 @@ public class MetaController {
         this.twelveDataService = twelveDataService;
     }
 
-    /**
-     * GET /api/meta/limits
-     *
-     * Returns current API usage statistics including:
-     * - Monthly usage (requests used/limit/remaining)
-     * - Per-minute usage
-     * - Warning flag if approaching monthly limit
-     *
-     * This endpoint does NOT consume API quota (reads from local counters).
-     *
-     * @return API usage statistics
-     */
     @GetMapping("/limits")
     public ResponseEntity<ApiLimitsResponse> getLimits() {
         log.debug("GET /api/meta/limits - Fetching API usage statistics");

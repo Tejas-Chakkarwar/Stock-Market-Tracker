@@ -5,18 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
-/**
- * Represents a cryptocurrency quote from Twelve Data API.
- *
- * Example API response:
- * {
- *   "symbol": "BTC/USD",
- *   "name": "Bitcoin/USD",
- *   "close": "35200.00",
- *   "percent_change": "0.86",
- *   ...
- * }
- */
 @JsonIgnoreProperties(ignoreUnknown = true)  // Ignore fields we don't need
 public class CryptoQuote implements Serializable {
 
@@ -62,10 +50,6 @@ public class CryptoQuote implements Serializable {
     @JsonProperty("average_volume")
     private String averageVolume;
 
-    /**
-     * Get the current price as a double.
-     * Twelve Data returns prices as strings, so we need to parse them.
-     */
     public Double getCurrentPrice() {
         try {
             return close != null ? Double.parseDouble(close) : null;
@@ -74,9 +58,6 @@ public class CryptoQuote implements Serializable {
         }
     }
 
-    /**
-     * Get the percentage change as a double.
-     */
     public Double getPercentChangeValue() {
         try {
             return percentChange != null ? Double.parseDouble(percentChange) : null;

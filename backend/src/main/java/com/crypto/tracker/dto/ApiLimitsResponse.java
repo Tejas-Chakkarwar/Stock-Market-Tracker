@@ -1,11 +1,5 @@
 package com.crypto.tracker.dto;
 
-/**
- * Response DTO for API usage and limits.
- *
- * This is what the frontend receives when calling GET /api/meta/limits
- * Used to display usage statistics and warnings to the user.
- */
 public class ApiLimitsResponse {
 
     // Monthly limits

@@ -1,12 +1,7 @@
-/**
- * TypeScript types for the Crypto Tracker application.
- * These match the backend DTOs from Spring Boot.
- */
 
-/**
- * Single cryptocurrency in the list view.
- * Matches: CryptoIndexResponse.java
- */
+ //TypeScript types for the Crypto Tracker application.
+ //These match the backend DTOs from Spring Boot.
+
 export interface CryptoIndex {
   symbol: string;              // e.g., "BTC/USD"
   name: string;                // e.g., "Bitcoin US Dollar"
@@ -16,10 +11,10 @@ export interface CryptoIndex {
   timestamp: number;           // Last update timestamp
 }
 
-/**
- * Single data point in historical chart.
- * Matches: HistoryDataPoint.java
- */
+
+ //Single data point in historical chart.
+ //Matches: HistoryDataPoint.java
+
 export interface HistoryDataPoint {
   date: string;                // e.g., "2024-11-05"
   open: number;                // Opening price
@@ -29,10 +24,10 @@ export interface HistoryDataPoint {
   volume: string | null;       // Trading volume
 }
 
-/**
- * Historical price data with statistics.
- * Matches: CryptoHistoryResponse.java
- */
+
+ //Historical price data with statistics.
+ //Matches: CryptoHistoryResponse.java
+
 export interface CryptoHistory {
   symbol: string;              // e.g., "BTC/USD"
   name: string;                // e.g., "Bitcoin"
@@ -42,10 +37,10 @@ export interface CryptoHistory {
   avgPrice: number;            // Average closing price
 }
 
-/**
- * API usage and rate limit information.
- * Matches: ApiLimitsResponse.java
- */
+
+ //API usage and rate limit information.
+ //Matches: ApiLimitsResponse.java
+
 export interface ApiLimits {
   monthlyUsed: number;         // Requests used this month
   monthlyLimit: number;        // Total monthly limit (500)
@@ -57,9 +52,7 @@ export interface ApiLimits {
   warningLevel: boolean;       // True if > 80% of monthly budget used
 }
 
-/**
- * API error response
- */
+ //API error response
 export interface ApiError {
   error: string;
   message?: string;

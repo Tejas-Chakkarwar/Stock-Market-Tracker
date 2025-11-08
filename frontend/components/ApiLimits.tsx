@@ -4,10 +4,6 @@ import { useEffect, useState } from 'react';
 import { fetchApiLimits } from '@/lib/api';
 import { ApiLimits as ApiLimitsType } from '@/types/crypto';
 
-/**
- * Component displaying API usage limits and current consumption.
- * Shows both monthly and per-minute rate limits.
- */
 export default function ApiLimits() {
   const [limits, setLimits] = useState<ApiLimitsType | null>(null);
   const [loading, setLoading] = useState(true);

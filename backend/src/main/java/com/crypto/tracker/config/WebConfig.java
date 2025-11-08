@@ -5,12 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-/**
- * Web configuration for CORS (Cross-Origin Resource Sharing).
- *
- * Allows the Next.js frontend (running on port 3000) to make API calls
- * to the Spring Boot backend (running on port 8080).
- */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 

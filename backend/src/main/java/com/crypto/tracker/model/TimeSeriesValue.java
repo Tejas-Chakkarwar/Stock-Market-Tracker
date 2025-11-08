@@ -5,19 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.io.Serializable;
 
-/**
- * Represents a single data point in a time series (historical price data).
- *
- * Example:
- * {
- *   "datetime": "2024-11-05",
- *   "open": "35000.00",
- *   "high": "35500.00",
- *   "low": "34800.00",
- *   "close": "35200.00",
- *   "volume": "1234567"
- * }
- */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TimeSeriesValue implements Serializable {
 
@@ -50,9 +37,6 @@ public class TimeSeriesValue implements Serializable {
         }
     }
 
-    /**
-     * Get high price as double.
-     */
     public Double getHighPrice() {
         try {
             return high != null ? Double.parseDouble(high) : null;
@@ -61,9 +45,6 @@ public class TimeSeriesValue implements Serializable {
         }
     }
 
-    /**
-     * Get low price as double.
-     */
     public Double getLowPrice() {
         try {
             return low != null ? Double.parseDouble(low) : null;

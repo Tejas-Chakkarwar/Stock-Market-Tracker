@@ -16,16 +16,6 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Redis cache configuration with custom TTL (Time To Live) for different data types.
- *
- * Strategy:
- * - Price list data: 120s cache (data changes frequently, API limit: 20 req/min)
- * - Historical data: 300s cache (past data doesn't change, can cache longer)
- *
- * This approach respects Twelve Data's rate limits (20/min, 500/month) while
- * keeping data reasonably fresh for users.
- */
 @Configuration
 @EnableCaching
 public class RedisCacheConfig {
@@ -76,10 +66,6 @@ public class RedisCacheConfig {
                 .build();
     }
 
-    /**
-     * StringRedisTemplate bean for simple key-value operations.
-     * Used by MonthlyBudget to track API usage counts.
-     */
     @Bean
     public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory connectionFactory) {
         return new StringRedisTemplate(connectionFactory);

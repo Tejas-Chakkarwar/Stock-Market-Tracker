@@ -5,12 +5,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 
-/**
- * Main entry point for the Crypto Tracker application.
- *
- * This Spring Boot app provides REST APIs for tracking cryptocurrency prices
- * using the Twelve Data API, with Redis caching to respect rate limits.
- */
 @SpringBootApplication
 @EnableCaching  // Enable Spring's caching support
 public class CryptoTrackerApplication {
@@ -28,10 +22,10 @@ public class CryptoTrackerApplication {
                 System.setProperty(entry.getKey(), entry.getValue())
             );
 
-            System.out.println("✅ Successfully loaded .env file from project root");
+            System.out.println("Successfully loaded .env file from project root");
         } catch (Exception e) {
             // If .env loading fails, continue anyway (environment variables might be set differently)
-            System.out.println("⚠️  Note: .env file not loaded, using system environment variables");
+            System.out.println("Note: .env file not loaded, using system environment variables");
         }
 
         SpringApplication.run(CryptoTrackerApplication.class, args);
