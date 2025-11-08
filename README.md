@@ -2,10 +2,15 @@
 
 A full-stack web application for tracking real-time stock market indices with historical data visualization. Built with Spring Boot backend and Next.js frontend, this application efficiently manages API rate limits through intelligent caching strategies.
 
+## Live Demo
+
+- **Frontend**: https://stock-market-tracker-eosin.vercel.app
+- **Backend API**: https://crypto-tracking-app-production-011c.up.railway.app/api
+
 ## Features
 
 ### Core Functionality
-- **Real-time Index Tracking**: Monitor live prices for SPX (S&P 500), DJI (Dow Jones), IXIC (NASDAQ), and FTSE (FTSE 100)
+- **Real-time Index Tracking**: Monitor live prices for SPY (S&P 500), DIA (Dow Jones), QQQ (NASDAQ-100), and IWM (Russell 2000)
 - **30-Day Price History**: Interactive charts showing historical price trends
 - **Auto-refresh**: Index prices update automatically every 90 seconds
 - **Rate Limit Management**: Visual display of API usage with monthly and per-minute tracking
@@ -142,11 +147,11 @@ GET /api/indices
 ```json
 [
   {
-    "symbol": "SPX",
-    "name": "S&P 500",
-    "currentPrice": 4783.45,
+    "symbol": "SPY",
+    "name": "SPDR S&P 500 ETF Trust",
+    "currentPrice": 478.34,
     "percentChange": 1.24,
-    "exchange": "CBOE",
+    "exchange": "NYSE Arca",
     "timestamp": 1699564800000
   },
   ...
@@ -158,23 +163,23 @@ GET /api/indices
 GET /api/indices/{symbol}/history
 ```
 
-**Example:** `GET /api/indices/SPX/history`
+**Example:** `GET /api/indices/SPY/history`
 
 **Response:**
 ```json
 {
-  "symbol": "SPX",
-  "name": "S&P 500",
+  "symbol": "SPY",
+  "name": "SPDR S&P 500 ETF Trust",
   "history": [
     {
       "date": "2025-01-01",
-      "close": 4783.45
+      "close": 478.34
     },
     ...
   ],
-  "minPrice": 4650.23,
-  "maxPrice": 4850.12,
-  "avgPrice": 4750.45
+  "minPrice": 465.02,
+  "maxPrice": 485.01,
+  "avgPrice": 475.04
 }
 ```
 
@@ -268,7 +273,7 @@ Token-Metrics/
    ```bash
    curl http://localhost:8080/api/indices
    ```
-   Should return array of 4 stock market indices (SPX, DJI, IXIC, FTSE)
+   Should return array of 4 ETFs tracking major indices (SPY, DIA, QQQ, IWM)
 
 2. **Check Rate Limits**
    ```bash
@@ -278,9 +283,9 @@ Token-Metrics/
 
 3. **Test Historical Data**
    ```bash
-   curl "http://localhost:8080/api/indices/SPX/history"
+   curl "http://localhost:8080/api/indices/SPY/history"
    ```
-   Should return 30-day price history for S&P 500
+   Should return 30-day price history for SPY (S&P 500 ETF)
 
 4. **Verify Caching**
    ```bash
@@ -296,8 +301,8 @@ Token-Metrics/
 
 5. **Test Frontend**
    - Navigate to `http://localhost:3000`
-   - Verify all 4 stock indices display (SPX, DJI, IXIC, FTSE)
-   - Click on an index to view detail page with 30-day chart
+   - Verify all 4 ETFs display (SPY, DIA, QQQ, IWM)
+   - Click on an ETF to view detail page with 30-day chart
    - Verify chart renders correctly
    - Check API limits component shows accurate data
 
@@ -408,14 +413,92 @@ The application uses environment variables for configuration. Never commit `.env
 - [ ] Dark/light theme toggle
 - [ ] Portfolio tracking with performance metrics
 
+## Assignment Requirements Checklist
+
+This project was built for a technical assessment. Below is a checklist of all requirements:
+
+### Core Requirements
+- [x] **List view** of key indices/indicators with current prices
+- [x] **Detail view** with 30-day historical charts
+- [x] **Server-side API calls** with keys stored in environment variables
+- [x] **Response caching** (120s for prices, 300s for history)
+- [x] **Rate limiting** (20 requests/min, 500 requests/month)
+- [x] **Deployed application** (Vercel + Railway + Upstash)
+- [x] **GitHub repository** with clean commit history
+- [x] **Comprehensive README** with setup and deployment instructions
+
+### Technical Implementation
+- [x] Spring Boot backend with Java 21
+- [x] Next.js 14 frontend with TypeScript
+- [x] Redis caching with TTL strategies
+- [x] Responsive dark theme UI
+- [x] Interactive charts with Recharts
+- [x] Auto-refresh functionality
+- [x] API usage monitoring
+- [x] Error handling and loading states
+- [x] CORS configuration for production
+- [x] Docker containerization
+
+### Data Sources
+- [x] Using Twelve Data API (free tier)
+- [x] Tracking 4 major indices via ETFs: SPY, DIA, QQQ, IWM
+- [x] 30-day historical data with OHLC values
+- [x] Real-time price updates
+
+### Documentation
+- [x] Setup instructions for local development
+- [x] API endpoint documentation
+- [x] Architecture and caching strategy explanation
+- [x] Testing procedures
+- [x] Troubleshooting guide
+- [x] Deployment steps
+
+## Deployment
+
+This application is deployed using the following services:
+
+### Production Architecture
+- **Frontend**: Vercel (https://stock-market-tracker-eosin.vercel.app)
+- **Backend**: Railway (https://crypto-tracking-app-production-011c.up.railway.app)
+- **Cache**: Upstash Redis (managed Redis instance)
+
+### Environment Variables (Production)
+
+**Backend (Railway):**
+```
+TWELVE_DATA_API_KEY=<your-api-key>
+SPRING_DATA_REDIS_HOST=<upstash-host>
+SPRING_DATA_REDIS_PORT=<upstash-port>
+SPRING_DATA_REDIS_PASSWORD=<upstash-password>
+SPRING_DATA_REDIS_SSL_ENABLED=true
+```
+
+**Frontend (Vercel):**
+```
+NEXT_PUBLIC_API_URL=https://crypto-tracking-app-production-011c.up.railway.app/api
+```
+
+### Deployment Steps
+
+**Backend to Railway:**
+1. Create account at https://railway.app
+2. Create new project and link GitHub repository
+3. Add environment variables in Railway dashboard
+4. Railway will auto-deploy using the Dockerfile
+
+**Frontend to Vercel:**
+1. Create account at https://vercel.com
+2. Import the repository
+3. Set root directory to `frontend`
+4. Add `NEXT_PUBLIC_API_URL` environment variable
+5. Deploy
+
+**Redis on Upstash:**
+1. Create account at https://upstash.com
+2. Create Redis database (free tier available)
+3. Copy connection details to Railway environment variables
+
 ## License
 
 This project is created for educational purposes as part of a technical assessment.
 
-## Contact
-
-For questions or issues, please open an issue in the repository.
-
----
-
-**Built with ❤️ using Spring Boot and Next.js**
